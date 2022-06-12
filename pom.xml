@@ -5,9 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>java-studby</artifactId>
+    <artifactId>java-study-project</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <build>
+
+    <properties>
+        <spring-starter-aop.version>2.5.6</spring-starter-aop.version>
+    </properties>
+
+   <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -24,6 +29,12 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>${spring-starter-aop.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -1,5 +1,8 @@
 package com.jsamuel.study;
 
+import com.jsamuel.study.proxy.ReaderServiceImpl;
+import com.jsamuel.study.proxy.ReaderServiceProxy;
+import com.jsamuel.study.proxy.ReaderServiceProxyFactory;
 import org.junit.Test;
 
 public class TestPorxy {

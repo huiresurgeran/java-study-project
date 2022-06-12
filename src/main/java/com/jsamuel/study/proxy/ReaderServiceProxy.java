@@ -1,4 +1,6 @@
-package com.jsamuel.study;
+package com.jsamuel.study.proxy;
+
+import com.jsamuel.study.ReaderService;
 
 public class ReaderServiceProxy implements ReaderService {
 
