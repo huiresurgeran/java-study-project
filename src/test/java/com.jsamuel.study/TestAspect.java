@@ -28,4 +28,14 @@ public class TestAspect {
 
         applicationContext.close();
     }
+
+    @Test
+    public void testWriterAspectAnotation() throws Exception {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AopConfig.class);
+
+        WriterService writerService = applicationContext.getBean(WriterService.class);
+        writerService.writeAnnotation();
+
+        applicationContext.close();
+    }
 }
