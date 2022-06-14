@@ -5,7 +5,7 @@ import com.jsamuel.study.proxy.ReaderServiceProxy;
 import com.jsamuel.study.proxy.ReaderServiceProxyFactory;
 import org.junit.Test;
 
-public class TestPorxy {
+public class TestProxy {
 
     @Test
     public void testStaticProxy() {
