@@ -1,0 +1,10 @@
+debug: true
+
+server:
+  port: 9001
+
+movie:
+  type: happy
+  name: jsamuel
+  year: 2022
+  is-like: true
