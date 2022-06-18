@@ -7,4 +7,9 @@ movie:
   type: happy
   name: jsamuel
   year: 2022
-  is-like: true
+  like: true
+sport:
+  type: many
+  name: football
+  count: 6
+  like: false
