@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.jsamuel.study.autoconfigure.MovieAutoConfiguration,\
-  com.jsamuel.study.autoconfigure.SportAutoConfiguration
