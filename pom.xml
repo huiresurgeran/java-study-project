@@ -12,9 +12,14 @@
         <module>study-spring-boot-starter</module>
         <module>test-spring-boot-starter</module>
         <module>study-others</module>
+        <module>study-ioc</module>
     </modules>
 
     <properties>
+        <java.version>8</java.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-starter-aop.version>2.5.6</spring-starter-aop.version>
         <springboot.version>2.3.11.RELEASE</springboot.version>
         <cglib.version>3.2.5</cglib.version>
