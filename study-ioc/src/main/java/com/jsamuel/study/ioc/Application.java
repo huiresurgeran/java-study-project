@@ -10,7 +10,7 @@ public class Application {
         // 创建Spring的IOC容器实例
         // 加载配置文件
         // 让Spring容器创建并且装配好，配置文件中指定的所有的Bean
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml.bak");
 
         // 从Spring容器中取出装配好的Bean
         // 根据Bean的类型
