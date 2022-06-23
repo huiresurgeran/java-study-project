@@ -13,6 +13,7 @@
         <module>test-spring-boot-starter</module>
         <module>study-others</module>
         <module>study-ioc</module>
+        <module>study-jvm</module>
     </modules>
 
     <properties>
