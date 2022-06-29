@@ -15,6 +15,7 @@
         <module>study-ioc</module>
         <module>study-jvm</module>
         <module>study-reflection</module>
+        <module>study-generic</module>
     </modules>
 
     <properties>
