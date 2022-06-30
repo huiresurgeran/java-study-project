@@ -5,6 +5,8 @@ import com.jsamuel.study.generic.gclass.Point;
 import com.jsamuel.study.generic.ginterface.Info;
 import com.jsamuel.study.generic.ginterface.InfoImpl;
 import com.jsamuel.study.generic.method.Generic;
+import com.jsamuel.study.generic.updown.Down;
+import com.jsamuel.study.generic.updown.Up;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,5 +60,29 @@ public class GenericTest {
         // obj，User类的实例
         // 利用Class.forName，指定泛型的具体类型
         Object obj = generic.getObject(Class.forName("com.jsamuel.study.generic.gclass.Point"));
+    }
+
+    @Test
+    public void testUp() {
+        // 声明Integer的泛型对象
+        Up<Integer> up = new Up<Integer>();
+        up.setVar(10);
+        logger.info("up: {}", up.toString());
+    }
+
+    @Test
+    public void testDown() {
+        Down<String> down1 = new Down<String>();
+        down1.setVar("down1");
+        fun(down1);
+
+        Down<Object> down2 = new Down<Object>();
+        down2.setVar(new Object());
+        fun(down2);
+    }
+
+    // 只能接收String或者Object类型的泛型，String类的父类只有Object类
+    private static void fun(Down<? super String> temp) {
+        logger.info("down: {}", temp);
     }
 }
