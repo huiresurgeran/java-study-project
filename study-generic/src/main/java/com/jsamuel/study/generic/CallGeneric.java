@@ -38,4 +38,19 @@ public class CallGeneric {
     public static <T> T add(T x, T y) {
         return y;
     }
+
+    /**
+     * 通过反射实例化一个泛型
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     */
+    public static <T> T newTClass(Class<T> clazz) throws IllegalAccessException, InstantiationException {
+        T obj = clazz.newInstance();
+        return obj;
+    }
+
 }
