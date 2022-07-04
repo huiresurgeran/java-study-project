@@ -16,6 +16,7 @@
         <module>study-jvm</module>
         <module>study-reflection</module>
         <module>study-generic</module>
+        <module>study-exception</module>
     </modules>
 
     <properties>
