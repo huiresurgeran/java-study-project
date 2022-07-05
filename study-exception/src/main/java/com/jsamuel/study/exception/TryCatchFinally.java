@@ -37,12 +37,13 @@ public class TryCatchFinally {
             }
         } catch (FileNotFoundException e) {
             logger.error("readFile failed, ", e);
-            MyException ex = new MyException("readFile failed");
+            // 将原始异常设置为原因
+            MyException ex = new MyException("readFile failed", e);
             ex.initCause(e);
             throw ex;
         } catch (IOException e) {
             logger.error("readFile failed, ", e);
-            MyException ex = new MyException("readFile failed");
+            MyException ex = new MyException("readFile failed", e);
             ex.initCause(e);
             throw ex;
         } finally {
