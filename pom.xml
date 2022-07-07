@@ -17,6 +17,10 @@
         <module>study-reflection</module>
         <module>study-generic</module>
         <module>study-exception</module>
+        <module>java-supplier</module>
+        <module>log</module>
+        <module>log-report</module>
+        <module>study-functional-interface</module>
     </modules>
 
     <properties>
