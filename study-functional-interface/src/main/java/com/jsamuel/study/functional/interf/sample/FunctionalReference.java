@@ -18,13 +18,17 @@ public class FunctionalReference {
 
         // 对象::实例方法 Lambda表达式的（形参列表）与实例方法（实参列表）类型，个数是对应的
         List list = Arrays.asList("piano", "wiolin", "guitar");
+        // list.forEach(t -> System.out.print(t));
         list.forEach(System.out::println);
 
         // 类名::静态方法
+        // Stream<Double> stream = Stream.generate(() -> Math.random());
         Stream<Double> stream = Stream.generate(Math::random);
         stream.forEach(System.out::println);
 
         // 类名::实例方法
+        // TreeSet<String> set = new TreeSet<>((s1, s2) -> s1.compareTo(s2));
+        // 上一行代码，lambda表达式，可以被替换成下面的方法引用
         TreeSet<String> set = new TreeSet<>(String::compareTo);
     }
 }
