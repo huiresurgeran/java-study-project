@@ -21,6 +21,7 @@
         <module>log</module>
         <module>log-report</module>
         <module>study-functional-interface</module>
+        <module>study-maven</module>
     </modules>
 
     <properties>
