@@ -60,6 +60,64 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.sample.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <!-- 预定义assembly descriptors -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- 自定义assembly descriptors -->
+                    <!--<descriptors>
+                        <descriptor>src/assembly/src.xml</descriptor>
+                    </descriptors>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <!--控制打包结果物是否会添加到project，即mvn deploy时是否会上传-->
+                    <attach>false</attach>
+                    <!--打包文件名字不包含assembly.xml中的id-->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!-- 自定义assembly descriptors -->
+                    <descriptors>
+                        <descriptor>${project.parent.basedir}/build/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
