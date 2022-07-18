@@ -22,6 +22,7 @@
         <module>log-report</module>
         <module>study-functional-interface</module>
         <module>study-maven</module>
+        <module>test-session</module>
     </modules>
 
     <properties>
