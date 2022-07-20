@@ -23,6 +23,7 @@
         <module>study-functional-interface</module>
         <module>study-maven</module>
         <module>test-session</module>
+        <module>study-logback</module>
     </modules>
 
     <properties>
