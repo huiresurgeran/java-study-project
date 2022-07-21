@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<included>
+    <property name="LOG_HOME" value="${APP_LOGS_PATH}"/>
+    <property name="LOG_PATTERN" value="${FILE_LOG_PATTERN}" />
+    <property name="CLEAN_HISTORY_ON_START" value="${LOG_FILE_CLEAN_HISTORY_ON_START:-false}" />
+    <property name="FILE_MAX_SIZE" value="${LOG_FILE_MAX_SIZE:-100MB}" />
+    <property name="FILE_MAX_HISTORY" value="${LOG_FILE_MAX_HISTORY:-14}" />
+    <property name="FILE_TOTAL_SIZE_CAP" value="${LOG_FILE_TOTAL_SIZE_CAP:-0}" />
+
+    <property name="ACC_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level  [%-15.15(%thread)]  %-50.50(%logger{50}) :  %msg%n"/>
+
+    <!-- ACC 日志-->
+
+    <appender name="ACC-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--指定日志文件的名称-->
+        <file>${LOG_HOME}/acc.log</file>
+        <!--发生滚动时，决定RollingFileAppender的行为，包括文件移动和文件重命名
+        TimeBasedRollingPolicy，根据时间制定滚动策略，负责滚动&发出滚动
+        SizeBasedRollingPolicy，根据大小制定滚动策略
+        SizeAndTimeBasedRollingPolicy，以上两者结合体-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--滚动时产生的文件的存放位置及文件名称
+            %d{yyyy-MM-dd-HH}，按天进行日志滚动
+            %i，按大小进行日志滚动，文件大小超过maxFileSize时，按照i进行文件滚动-->
+            <fileNamePattern>${LOG_HOME}/acc.%d{yyyy-MM-dd-HH}.%i.log</fileNamePattern>
+            <!--是否在启动的时候清理历史日志，默认false-->
+            <cleanHistoryOnStart>${CLEAN_HISTORY_ON_START}</cleanHistoryOnStart>
+            <maxFileSize>${FILE_MAX_SIZE}</maxFileSize>
+            <!--控制保留的归档文件的最大数量，超出则删除旧文件-->
+            <maxHistory>${FILE_MAX_HISTORY}</maxHistory>
+            <!--限制总的日志文件的大小-->
+            <totalSizeCap>${FILE_TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!--日志输出格式-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${ACC_LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+
+</included>
