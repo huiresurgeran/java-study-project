@@ -5,8 +5,31 @@ scanPeriod：检测配置文件是否有修改的时间间隔，如果没有给�
 debug：属性值为true时，打印出logback内部日志信息，实时查看logback运行状态，默认值为false
 -->
 <configuration scan="true" scanPeriod="60 second" debug="false">
-    <!--属性-->
+    <!--
+    上下文名称
+    每个logger都关联到logger上下文，默认上下文名称为"default"
+    用于区分不同应用程序的记录
+    一旦设置，不能修改
+    -->
+    <contextName>${APP_NAME}</contextName>
+
+    <!--
+    设置变量/属性
+    <property> 有两个属性，name和value
+    name的值是变量的名称，value的值是变量定义的值
+    通过<property>定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量
+    -->
+    <property name="APP_NAME" value="jsamuel-study-logback"></property>
     <property name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%10.10t]){faint} %clr(%-40.40logger{39}[%L]){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"></property>
+    <!-- 设置默认值 -->
+    <property name="FILE_MAX_SIZE" value="${LOG_FILE_MAX_SIZE:-100MB}" />
+
+    <!--
+    获取时间戳字符串
+    key，标识此<timestamp> 的名字
+    datePattern：设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循java.txt.SimpleDateFormat的格式
+    -->
+    <timestamp key="bySecond" datePattern="yyyy-MM-dd'T'HH:mm:ss"></timestamp>
 
     <!-- run application from command line: @see assembly/bin/start.sh -->
     <!-- 脚本执行命令有 exec=$(getExec "&#45;&#45;spring.profiles.active=cli" ${@}) -->

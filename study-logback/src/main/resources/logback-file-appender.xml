@@ -11,9 +11,24 @@
 
     <!-- ACC 日志-->
 
-    <appender name="ACC-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="ACC-INFO-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--指定日志文件的名称-->
         <file>${LOG_HOME}/acc.log</file>
+        <!-- 日志过滤器，支持配置一个或多个，当满足过滤器指定条件时，才记录日志 -->
+        <!--
+        FilterReply有三种枚举值：
+        1. DENY：表示不用看后面的过滤器了，这里就给拒绝了，不作记录
+        2. NEUTRAL：表示需不需要记录，还需要看后面的过滤器。若所有过滤器返回的全部都是NEUTRAL，那么需要记录日志
+        3. ACCEPT：表示不用看后面的过滤器了，这里就给直接同意了，需要记录
+        -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!--日志级别-->
+            <level>INFO</level>
+            <!--日志级别不匹配，拒绝-->
+            <OnMismatch>DENY</OnMismatch>
+            <!--日志级别匹配，接收-->
+            <OnMatch>ACCEPT</OnMatch>
+        </filter>
         <!--发生滚动时，决定RollingFileAppender的行为，包括文件移动和文件重命名
         TimeBasedRollingPolicy，根据时间制定滚动策略，负责滚动&发出滚动
         SizeBasedRollingPolicy，根据大小制定滚动策略
@@ -25,6 +40,7 @@
             <fileNamePattern>${LOG_HOME}/acc.%d{yyyy-MM-dd-HH}.%i.log</fileNamePattern>
             <!--是否在启动的时候清理历史日志，默认false-->
             <cleanHistoryOnStart>${CLEAN_HISTORY_ON_START}</cleanHistoryOnStart>
+            <!--当日志文件超过maxFileSize指定的大小是，根据上面提到的%i进行日志文件滚动-->
             <maxFileSize>${FILE_MAX_SIZE}</maxFileSize>
             <!--控制保留的归档文件的最大数量，超出则删除旧文件-->
             <maxHistory>${FILE_MAX_HISTORY}</maxHistory>
@@ -39,6 +55,17 @@
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>${ACC_LOG_PATTERN}</pattern>
         </layout>
+    </appender>
+
+    <!-- 日志异步输出 -->
+    <appender name="ASYNC-ACC" class="ch.qos.logback.classic.AsyncAppender">
+        <!--抛弃日志阈值
+        默认情况下，当队列剩余容量小于总容量的20%时，日志级别<=INFO的内容将不会打印，只会打印WARN、ERROR级别的内容-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--队列容量配置，默认值256-->
+        <queueSize>256</queueSize>
+        <!--AsyncAppender中只能配置一个appender-ref，否则无效-->
+        <appender-ref ref="ACC-APPENDER"/>
     </appender>
 
 </included>
