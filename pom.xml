@@ -25,6 +25,7 @@
         <module>test-session</module>
         <module>study-logback</module>
         <module>study-netty</module>
+        <module>study-otlp</module>
     </modules>
 
     <properties>
